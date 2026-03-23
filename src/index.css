@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ci-orange: #F4720B;
+  --ci-green: #009A3C;
+  --ci-dark: #0F0E0C;
+  --ci-surface: #F5F3EE;
+  --ci-card: #FFFFFF;
+  --ci-muted: #6B7280;
+  --ci-border: #E5E1D8;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--ci-surface)] text-[var(--ci-dark)] antialiased selection:bg-orange-100 selection:text-orange-900;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer components {
+  /* Cards */
+  .ci-card {
+    @apply bg-[var(--ci-card)] border border-[var(--ci-border)] rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.08)];
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply w-full h-14 flex items-center justify-center bg-[var(--ci-orange)] text-white font-semibold rounded-xl 
+           transition-opacity duration-200 hover:opacity-90 active:opacity-100
+           disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply w-full h-14 flex items-center justify-center bg-transparent border-[1.5px] border-[var(--ci-border)] 
+           text-[var(--ci-dark)] font-semibold rounded-xl 
+           transition-opacity duration-200 hover:bg-[var(--ci-surface)] active:opacity-100;
+  }
+
+  .btn-whatsapp {
+    @apply w-full h-12 flex items-center justify-center gap-2 bg-[#009A3C] text-white font-bold rounded-xl 
+           transition-opacity duration-200 hover:opacity-90;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full h-12 px-4 bg-white border-[1.5px] border-[var(--ci-border)] rounded-xl 
+           focus:border-[var(--ci-orange)] focus:outline-none transition-all 
+           font-medium placeholder:text-[var(--ci-muted)];
+  }
+}
+
+/* One-time Mount Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up {
+    animation: none;
+  }
+}
